@@ -39,6 +39,10 @@ namespace ToDoApi.Controllers
             }
             if (indexFinish.HasValue)
             {
+                if (indexStart > indexFinish.Value)
+                {
+                    return Problem("indexFinish must be greater than indexStart");
+                }
                 todoItems = todoItems.Skip(indexStart - 1).Take((int)(indexFinish - indexStart + 1));
             }
 
